@@ -5,7 +5,7 @@ body {
     font-family: arial, sans-serif;
 }
 
-#main, #chats {
+#main, #chats , #rooms{
     width: 500px;
     margin: auto; 
     text-align: left;
@@ -81,4 +81,8 @@ form input[type=text] {
 
 .spinner img {
     padding: 10px;
+}
+
+.hidden {
+    display: none;
 }

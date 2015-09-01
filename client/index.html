@@ -16,7 +16,22 @@
     <div id="main">
       <h1>chatterbox</h1>
       <!-- Your HTML goes here! --> 
-
+        <form id="sendMessage">
+          <fieldset>
+            <h2>Send Message</h2>
+            <div>
+              <label>Message</label>
+              <input type="text" name="message" id="message" />
+            </div>
+          </fieldset>
+        </form>
+      <button type="button" id="click" name="send" value="Send">Send</button>
+      <div>
+        <h4 class="hidden"> Rooms </h4>
+        <select id="roomSelector" onchange="changeRoom()">
+          <option value="">Home</option>
+        </select>
+      </div>
     </div>
     <div id="chats"></div>
   </body>
