@@ -86,3 +86,10 @@ form input[type=text] {
 .hidden {
     display: none;
 }
+.user {
+    color: blue;
+}
+
+.bold {
+    font-weight: bold;
+}

@@ -5,6 +5,8 @@ var displayedMessages = {};
 var messageProperties = {};
 var roomsList = {};
 var friendsList = {};
+var app = {};
+app.init = function () {};
 
 $(document).ready(function(){
 
@@ -31,9 +33,13 @@ $(document).ready(function(){
             }
             displayedMessages[msgObject.objectId] = msgObject;
             var $node = $("<div></div>");
-            var $userLink = $("<span></span>");
+            var $userLink = $("<a></a>");
             $userLink.addClass("user");
+            $userLink.on("click", selectUser);
             $userLink.text(msgObject.username);
+            if (friendsList[msgObject.username]) {
+              $userLink.addClass("bold");
+            }
             $node.addClass("chat");
             $node.attr("id", msgObject.objectId);
             $node.text( " message: " + msgObject.text + " created: "
@@ -84,11 +90,22 @@ $(document).ready(function(){
       }
     });
   });
-  $('.user').click(function() {
-    alert("clicked!");
-    friendsList[$(this).text()] = $(this).text();
-  });
 });
+
+function selectUser() {
+  console.log("Clicked!");
+  friendsList[$(this).text()] = $(this).text();
+  boldFriends($(this).text());
+}
+
+function boldFriends(friend) {
+    $(".user").each(function(index, element) {
+      if (friend === $(this).text()) {
+        $(this).addClass("bold");
+      }
+    });
+}
+
 function changeRoom() {
   var selectedRoom = $( "#roomSelector option:selected" ).text();
   //Display all if currentRoom === home
